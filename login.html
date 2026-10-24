@@ -82,7 +82,11 @@ function setMode(signup) {
     : 'नयाँ हुनुहुन्छ? <a id="switchLink" href="./login.html?mode=signup">नयाँ Account बनाउनुहोस्</a>';
   $("navSignup").textContent = signup ? "Login" : "Sign Up";
   $("navSignup").href = signup ? "./login.html" : "./login.html?mode=signup";
-  history.replaceState(null, "", signup ? "?mode=signup" : location.pathname);
+  const redirectTarget = new URLSearchParams(location.search).get("redirect");
+  const nextQuery = new URLSearchParams();
+  if (signup) nextQuery.set("mode", "signup");
+  if (redirectTarget) nextQuery.set("redirect", redirectTarget);
+  history.replaceState(null, "", location.pathname + (nextQuery.toString() ? "?" + nextQuery.toString() : ""));
 }
 setMode(signupMode);
 
