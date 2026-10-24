@@ -15,7 +15,7 @@
 .booking-help{padding:15px 18px;background:var(--sand);border:1px solid #eadaca;border-radius:12px;color:#5a3b30;margin-bottom:24px;font-size:14px}
 .calendar-card{background:#fff;border:1px solid #eadaca;border-radius:18px;overflow:hidden;box-shadow:0 12px 35px #541a0c0b;margin-bottom:28px}.calendar-heading{padding:18px 22px;background:var(--red);color:#fff;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.calendar-heading h3{margin:0;font-size:20px}.calendar-heading p{margin:2px 0 0;color:#f8e5df;font-size:12px}.calendar-badge{border-radius:99px;padding:5px 12px;background:var(--gold);color:#591017;font-weight:700;font-size:12px;white-space:nowrap}
 .calendar-body{padding:18px}.date-instructions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:12px;font-size:13px;color:var(--muted)}.step{display:inline-flex;align-items:center;gap:7px}.dot{width:22px;height:22px;border-radius:50%;display:inline-grid;place-items:center;background:#f7e5df;color:var(--red);font-size:11px;font-weight:700}.range-field{width:100%;border:1px solid #e4d6cb;border-radius:10px;padding:12px 14px;font:inherit;color:var(--dark);background:#fffaf5;margin-bottom:14px}
-#bookingCalendar{width:100%;min-height:320px}
+.patro-frame{width:100%;max-width:800px;margin:0 auto;border:1px solid #eadaca;border-radius:12px;overflow:hidden;background:#fff}.patro-frame iframe{display:block;width:100%;height:500px;border:0}.patro-note{font-size:13px;color:var(--muted);text-align:center;margin:10px 0 18px}.date-range-inputs{display:grid;grid-template-columns:1fr 1fr;gap:16px}.date-range-inputs label{display:block;font-weight:700;color:var(--dark);font-size:14px;margin-bottom:6px}.date-range-inputs .range-field{margin-bottom:0;min-height:48px}
 .calendar-summary{margin-top:15px;padding:14px 16px;background:#f1f7f2;border:1px solid #cce4d1;border-radius:11px;color:#205c39;font-weight:700}.calendar-summary small{display:block;font-weight:400;color:#557663;font-size:12px;margin-top:3px}
 .booking-form{display:grid;grid-template-columns:1fr 1fr;gap:18px;padding:26px;background:#fff;border:1px solid #eadaca;border-radius:16px;box-shadow:0 12px 35px #541a0c08}.booking-form label{display:block;font-weight:700;color:var(--dark);margin-bottom:6px;font-size:14px}.booking-form input,.booking-form select,.booking-form textarea{width:100%;padding:12px 13px;border:1px solid #d9c7b8;border-radius:9px;background:#fffdf9;font:inherit;color:var(--ink)}.booking-form input:focus,.booking-form select:focus,.booking-form textarea:focus{outline:2px solid #9d17212b;border-color:var(--red)}.booking-form textarea{min-height:110px;resize:vertical}.full{grid-column:1/-1}.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 20px;border-radius:99px;background:var(--gold);color:#591017;font-weight:700;font:inherit;cursor:pointer;border:0}.redbtn{background:var(--red);color:white}.booking-form .btn{width:100%;padding:14px}.booking-status{margin:14px 0;color:var(--green);font-weight:700;font-size:14px;overflow-wrap:anywhere}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}.card{background:white;border:1px solid #eadaca;border-radius:12px;padding:22px}.card h3{color:var(--dark);margin:0 0 5px}.card p{color:var(--muted);font-size:14px;margin:0 0 12px}.footer{background:#3a211f;color:#f8e9de;padding:25px 0;text-align:center;font-size:13px}.footer a{color:var(--gold)}
 /* Style the inline Nepali calendar to match the site's gallery cards and brand palette. */
@@ -25,7 +25,7 @@
 #bookingCalendar td{border:1px solid #eee2d8!important;border-radius:8px!important;height:58px!important;text-align:center!important}
 #bookingCalendar td:hover{background:#fff2e8!important}
 #bookingCalendar button,#bookingCalendar .date{border-radius:8px!important}
-@media(max-width:820px){.links{gap:10px;font-size:12px}.brand img{width:58px;height:48px}.brand strong{font-size:21px}}@media(max-width:640px){.wrap{width:calc(100% - 32px)}.nav{min-height:68px}.brand img{width:54px;height:45px}.brand strong{font-size:20px}.menu{display:block}.links{display:none;position:absolute;z-index:1001;left:0;right:0;top:68px;background:var(--dark);padding:12px 22px 18px;flex-direction:column;align-items:stretch;gap:0;box-shadow:0 8px 16px #0002}.links.open{display:flex}.links a{padding:10px 0;border-bottom:1px solid #ffffff25;font-size:15px}.hero{padding:40px 0}.content{padding:26px 0 45px}.calendar-heading{align-items:flex-start;flex-direction:column}.calendar-body{padding:10px}.booking-form{grid-template-columns:1fr;padding:18px}.full{grid-column:auto}.grid{grid-template-columns:1fr}#bookingCalendar td{height:48px!important}}
+@media(max-width:820px){.links{gap:10px;font-size:12px}.brand img{width:58px;height:48px}.brand strong{font-size:21px}}@media(max-width:640px){.patro-frame iframe{height:500px}.date-range-inputs{grid-template-columns:1fr}.wrap{width:calc(100% - 32px)}.nav{min-height:68px}.brand img{width:54px;height:45px}.brand strong{font-size:20px}.menu{display:block}.links{display:none;position:absolute;z-index:1001;left:0;right:0;top:68px;background:var(--dark);padding:12px 22px 18px;flex-direction:column;align-items:stretch;gap:0;box-shadow:0 8px 16px #0002}.links.open{display:flex}.links a{padding:10px 0;border-bottom:1px solid #ffffff25;font-size:15px}.hero{padding:40px 0}.content{padding:26px 0 45px}.calendar-heading{align-items:flex-start;flex-direction:column}.calendar-body{padding:10px}.booking-form{grid-template-columns:1fr;padding:18px}.full{grid-column:auto}.grid{grid-template-columns:1fr}#bookingCalendar td{height:48px!important}}
 </style>
 </head>
 <body>
@@ -39,9 +39,14 @@
 <div class="calendar-heading"><div><h3>नेपाली पात्रोबाट मिति छान्नुहोस्</h3><p>विक्रम संवत् · मिति दायरा चयन</p></div><span class="calendar-badge">पहिलो मिति → अन्तिम मिति</span></div>
 <div class="calendar-body">
 <div class="date-instructions"><span class="step"><span class="dot">१</span> सुरु हुने मिति छान्नुहोस्</span><span class="step"><span class="dot">२</span> अन्तिम मिति छान्नुहोस्</span></div>
-<input id="bookingCalendar" class="range-field" type="text" placeholder="क्यालेन्डरमा मिति छान्नुहोस्" readonly aria-label="नेपाली पात्रोबाट बुकिङ अवधि छान्नुहोस्">
-<div id="calendarSummary" class="calendar-summary" aria-live="polite">अहिलेसम्म मिति छानिएको छैन।<small>क्यालेन्डरमा दुईवटा मिति छानेपछि बुकिङ अवधि यहाँ देखिनेछ।</small></div>
-</div></section>
+<div class="patro-frame"><iframe title="Hamro Patro नेपाली पात्रो" src="https://www.hamropatro.com/widgets/calendar-responsive.php" loading="lazy" scrolling="no"></iframe></div>
+<p class="patro-note">माथि हाम्रो पात्रोको नेपाली क्यालेन्डर हेर्नुहोस्। बुकिङको मिति तलका दुई मिति छान्ने ठाउँबाट छान्नुहोस्।</p>
+<div class="date-range-inputs">
+<div><label for="bookingStart">सुरु हुने नेपाली मिति</label><input id="bookingStart" class="range-field" type="text" placeholder="सुरु मिति छान्नुहोस्" autocomplete="off" required></div>
+<div><label for="bookingEnd">अन्तिम नेपाली मिति</label><input id="bookingEnd" class="range-field" type="text" placeholder="अन्तिम मिति छान्नुहोस्" autocomplete="off" required></div>
+</div>
+<div id="calendarSummary" class="calendar-summary" aria-live="polite">अहिलेसम्म मिति छानिएको छैन।<small>सुरु र अन्तिम मिति छानेपछि बुकिङ अवधि यहाँ देखिनेछ।</small></div>
+</div></div></section>
 <form class="booking-form" id="bookingForm">
 <input type="hidden" id="bookingDateAD" name="bookingDateAD"><input type="hidden" id="bookingEndDateAD" name="bookingEndDateAD">
 <div><label for="eventType">कार्यक्रमको प्रकार</label><select id="eventType" name="eventType" required><option value="">कार्यक्रम छान्नुहोस्</option><option>विवाह</option><option>व्रतबन्ध</option><option>बेबी शावर</option><option>फोटोसुट</option><option>इन्गेजमेन्ट</option><option>अन्य कार्यक्रम</option></select></div>
@@ -56,33 +61,30 @@
 <script src="https://nepalidatepicker.sajanmaharjan.com.np/v5/nepali.datepicker/js/nepali.datepicker.v5.0.6.min.js"></script>
 <script>
 (function(){
- const input=document.getElementById('bookingCalendar');
+ const start=document.getElementById('bookingStart');
+ const end=document.getElementById('bookingEnd');
  const summary=document.getElementById('calendarSummary');
  const status=document.getElementById('bookingStatus');
- let lastValue='';
- function updateSummary(value){
-   const v=(value||input.value||'').trim();
-   if(!v){summary.innerHTML='अहिलेसम्म मिति छानिएको छैन।<small>क्यालेन्डरमा दुईवटा मिति छानेपछि बुकिङ अवधि यहाँ देखिनेछ।</small>';return;}
-   lastValue=v;
-   const parts=v.split(/\s+-\s+/);
-   if(parts.length>1){
-     summary.innerHTML='बुकिङ अवधि: '+escapeHtml(parts[0])+' देखि '+escapeHtml(parts[1])+' सम्म<small>चयन गरिएका सबै दिन बुकिङ अनुरोधमा समावेश हुनेछन्।</small>';
-   }else{
-     summary.innerHTML='छानिएको मिति: '+escapeHtml(v)+'<small>दायरा पूरा गर्न अन्तिम मिति पनि छान्नुहोस्।</small>';
-   }
- }
  function escapeHtml(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
- if(typeof input.nepaliDatePicker==='function'){
-   input.nepaliDatePicker({inline:true,range:true,unicodeDate:true,closeOnDateSelect:false,onSelect:function(value){updateSummary(value);}});
- }else{
-   summary.innerHTML='नेपाली क्यालेन्डर लोड हुन सकेन। इन्टरनेट जडान जाँचेर पेज पुनः खोल्नुहोस्।<small>क्यालेन्डर सेवा उपलब्ध नभएकाले अहिले मिति चयन गर्न सकिँदैन।</small>';
+ function updateSummary(){
+   const a=start.value.trim(), b=end.value.trim();
+   if(!a&&!b){summary.innerHTML='अहिलेसम्म मिति छानिएको छैन।<small>सुरु र अन्तिम मिति छानेपछि बुकिङ अवधि यहाँ देखिनेछ।</small>';return;}
+   if(a&&b){summary.innerHTML='बुकिङ अवधि: '+escapeHtml(a)+' देखि '+escapeHtml(b)+' सम्म<small>WhatsApp बुकिङ अनुरोधमा यही मिति पठाइनेछ।</small>';return;}
+   summary.innerHTML='सुरु मिति: '+escapeHtml(a||b)+'<small>कृपया '+(a?'अन्तिम मिति':'सुरु मिति')+' पनि छान्नुहोस्।</small>';
  }
- input.addEventListener('change',()=>updateSummary(input.value));
+ if(typeof start.nepaliDatePicker==='function'){
+   start.nepaliDatePicker({unicodeDate:true});
+   end.nepaliDatePicker({unicodeDate:true});
+ }else{
+   summary.innerHTML='नेपाली मिति छनोट सेवा लोड हुन सकेन। इन्टरनेट जडान जाँचेर पेज पुनः खोल्नुहोस्।';
+ }
+ start.addEventListener('change',updateSummary);
+ end.addEventListener('change',updateSummary);
  document.getElementById('bookingForm').addEventListener('submit',function(e){
    e.preventDefault();
-   const date=(input.value||'').trim();
-   if(!date || !date.includes(' - ')){
-     status.textContent='कृपया क्यालेन्डरमा सुरु र अन्तिम दुवै मिति छान्नुहोस्।';
+   const a=start.value.trim(), b=end.value.trim();
+   if(!a||!b){
+     status.textContent='कृपया सुरु र अन्तिम दुवै नेपाली मिति छान्नुहोस्।';
      document.querySelector('.calendar-card').scrollIntoView({behavior:'smooth',block:'start'});
      return;
    }
@@ -91,7 +93,7 @@
    const phone=document.getElementById('customerPhone').value.trim();
    const location=document.getElementById('eventLocation').value.trim();
    const note=document.getElementById('bookingNote').value.trim();
-   const msg='नमस्ते Bihe Click, म बुकिङ अनुरोध गर्न चाहन्छु।\nकार्यक्रम: '+type+'\nबुकिङ अवधि (नेपाली मिति): '+date+'\nनाम: '+name+'\nफोन: '+phone+'\nस्थान: '+location+'\nनोट: '+note;
+   const msg='नमस्ते Bihe Click, म बुकिङ अनुरोध गर्न चाहन्छु।\nकार्यक्रम: '+type+'\nबुकिङ अवधि (नेपाली मिति): '+a+' देखि '+b+' सम्म\nनाम: '+name+'\nफोन: '+phone+'\nस्थान: '+location+'\nनोट: '+note;
    status.textContent='WhatsApp खुल्दैछ। कृपया खुलेको मेसेज पठाएर अनुरोध पूरा गर्नुहोस्।';
    window.open('https://wa.me/9779745384513?text='+encodeURIComponent(msg),'_blank','noopener');
  });
