@@ -1,204 +1,156 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ne">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login | Bihe Click</title>
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0; min-height: 100vh; display: grid;
-      place-items: center; padding: 20px;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #081d43, #174f87);
-    }
-    .login {
-      width: 100%; max-width: 410px; background: white;
-      padding: 28px; border-radius: 18px; text-align: center;
-      box-shadow: 0 12px 35px #0004;
-    }
-    .logo { width: 100px; height: 100px; object-fit: contain; }
-    h1 { color: #123b70; margin-bottom: 6px; }
-    p { color: #666; }
-    input, button {
-      width: 100%; padding: 13px; margin-top: 12px;
-      border-radius: 8px; font-size: 15px;
-    }
-    input { border: 1px solid #ccc; }
-    button {
-      border: 0; cursor: pointer; color: white;
-      background: #123b70; font-weight: bold;
-    }
-    .google { background: #4285f4; }
-    .facebook { background: #1877f2; }
-    .secondary { background: #555; }
-    #message { font-size: 14px; overflow-wrap: anywhere; }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#9d1721">
+<title>Login / Sign Up | Bihe Click</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--red:#9d1721;--dark:#761019;--cream:#fffaf2;--sand:#f2e5d7;--gold:#e0b844;--ink:#352421;--muted:#796861}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:var(--cream);color:var(--ink);font-family:"Noto Sans Devanagari","DM Sans",sans-serif}
+a{color:inherit;text-decoration:none}.top{background:var(--red);color:white}.nav{width:min(1160px,92%);margin:auto;min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:12px}.brand img{width:68px;height:56px;object-fit:contain;background:var(--cream);border-radius:9px}.brand strong{font-size:23px}.brand strong span{color:#f3d26b}.brand small{display:block;font-size:11px;color:#f9e9df}.navlinks{display:flex;align-items:center;gap:12px;font-size:14px}.navlinks a{padding:9px 12px;border-radius:30px}.navlinks a:hover{color:#f3d26b}.navlinks .signup-link{background:var(--gold);color:#591017;font-weight:700}.bar{background:var(--sand);color:var(--red);text-align:center;padding:7px;font-size:12px;font-weight:700}
+main{width:min(1060px,92%);margin:48px auto 64px;display:grid;grid-template-columns:1fr 440px;min-height:590px;border-radius:22px;overflow:hidden;background:white;box-shadow:0 22px 65px #4a20131c;border:1px solid #eadaca}
+.story{padding:54px 46px;color:white;background:linear-gradient(0deg,#3a1515d9,#3a151570),url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1100&q=85") center/cover;display:flex;flex-direction:column;justify-content:flex-end}
+.kicker{font-size:11px;letter-spacing:1.4px;font-weight:700;color:#f3d26b}.story h1{font-size:clamp(32px,4vw,48px);line-height:1.3;margin:14px 0}.story h1 span{color:#f3d26b}.story p{max-width:390px;color:#f8e9de;line-height:1.9}.quote{border-top:1px solid #ffffff55;margin-top:22px;padding-top:17px;font-size:13px;color:#f6e7d8}
+.panel{padding:42px 36px;display:flex;flex-direction:column;justify-content:center}.logo-mobile{display:none}.panel h2{color:var(--dark);font-size:30px;margin:0 0 5px}.subtitle{color:var(--muted);font-size:13px;margin:0 0 22px}.field-label{display:block;font-size:13px;font-weight:700;margin:13px 0 6px}.field{width:100%;border:1px solid #e1d4c8;border-radius:10px;padding:13px 14px;font:inherit;font-size:14px;background:#fffdf9;outline:none}.field:focus{border-color:var(--red);box-shadow:0 0 0 3px #9d17211a}.password-wrap{position:relative}.password-wrap .field{padding-right:68px}.showpass{position:absolute;right:8px;top:8px;border:0;background:transparent;color:var(--red);font:inherit;font-size:12px;cursor:pointer;padding:7px}
+.primary,.social{width:100%;border:0;border-radius:10px;padding:13px 12px;font:inherit;font-weight:700;font-size:14px;cursor:pointer;transition:transform .15s,filter .15s}.primary{background:var(--red);color:white;margin-top:19px;box-shadow:0 6px 15px #9d17212b}.primary:hover,.social:hover{filter:brightness(.96);transform:translateY(-1px)}.or{display:flex;align-items:center;gap:12px;color:#9b8b82;font-size:12px;margin:19px 0}.or:before,.or:after{content:"";height:1px;background:#eee2d8;flex:1}.socials{display:grid;grid-template-columns:1fr 1fr;gap:10px}.social{background:white;border:1px solid #e4d8cf;color:#342b28;display:flex;justify-content:center;align-items:center;gap:8px}.social.facebook{background:#1877f2;color:white;border-color:#1877f2}.social.google b{color:#4285f4;font-size:18px}.social.facebook b{font-size:16px}.switch{font-size:13px;text-align:center;color:var(--muted);margin:20px 0 0}.switch a{font-weight:700;color:var(--red);text-decoration:underline;text-underline-offset:3px}.message{font-size:12px;line-height:1.7;color:var(--red);overflow-wrap:anywhere;min-height:20px;margin:12px 0 0}.back{text-align:center;margin-top:14px;font-size:12px;color:var(--muted)}.back a{color:var(--red);font-weight:700}
+@media(max-width:780px){main{grid-template-columns:1fr;max-width:500px;margin:28px auto 45px}.story{display:none}.panel{padding:32px 25px}.logo-mobile{display:block;width:78px;height:60px;object-fit:contain;background:var(--cream);border-radius:9px;margin-bottom:20px}.navlinks a:not(.signup-link){display:none}}
+@media(max-width:400px){.nav{width:94%}.brand img{width:55px;height:48px}.brand strong{font-size:19px}.navlinks{font-size:12px}.navlinks a{padding:8px 10px}.panel{padding:28px 19px}.socials{grid-template-columns:1fr}.bar{font-size:11px}}
+</style>
 </head>
 <body>
-  <main class="login">
-    <img class="logo" src="bihe-click-logo.png" alt="Bihe Click Logo">
-    <h1>Bihe Click</h1>
-    <p>लगइन गर्नुहोस्</p>
-
-    <form id="loginForm">
-      <input id="email" type="email" placeholder="Email ठेगाना" required>
-      <input id="password" type="password" placeholder="Password (कम्तीमा ६ अक्षर)" minlength="6" required>
-      <button type="submit">Login / Sign in</button>
-    </form>
-
-    <button id="signup" class="secondary">नयाँ Account बनाउनुहोस्</button>
-    <button id="google" class="google">Google बाट Login</button>
-    <button id="facebook" class="facebook">Facebook बाट Login</button>
-    <button id="logout" class="secondary" hidden>Logout</button>
-    <p id="message">लगइन गर्न आफ्नो विकल्प छान्नुहोस्।</p>
-  </main>
-
-  
+<header class="top"><div class="nav">
+<a class="brand" href="./index.html"><img src="./bihe-click-logo.png" alt="Bihe Click लोगो"><span><strong>Bihe <span>Click</span></strong><small>तपाईंका अमूल्य पलहरूको सम्झना</small></span></a>
+<nav class="navlinks"><a href="./index.html">गृहपृष्ठ</a><a href="./gallery.html">ग्यालरी</a><a href="./contact.html">सम्पर्क</a><a class="signup-link" id="navSignup" href="./login.html?mode=signup">Sign Up</a></nav>
+</div></header>
+<div class="bar">✿　॥ श्री गणेशाय नमः ॥　✿</div>
+<main>
+<section class="story"><div class="kicker">BIHE CLICK · YOUR STORY, YOUR FOREVER</div><h1>प्रेमको नयाँ सुरुवात,<br><span>यहाँबाट।</span></h1><p>तपाईंको Bihe Click यात्रामा स्वागत छ। आफ्नो खाता खोल्नुहोस् र सुन्दर सम्झनाहरूको संसारमा जोडिनुहोस्।</p><div class="quote">♡ हरेक कथा विशेष छ — तपाईंको कथा पनि।</div></section>
+<section class="panel">
+<img class="logo-mobile" src="./bihe-click-logo.png" alt="Bihe Click लोगो">
+<h2 id="heading">फेरि स्वागत छ!</h2><p class="subtitle" id="subtitle">आफ्नो खातामा Login गर्नुहोस्।</p>
+<form id="loginForm">
+<div id="nameWrap" hidden><label class="field-label" for="name">पूरा नाम</label><input class="field" id="name" type="text" autocomplete="name" placeholder="तपाईंको पूरा नाम"></div>
+<label class="field-label" for="email">Email ठेगाना</label><input class="field" id="email" type="email" autocomplete="email" placeholder="name@example.com" required>
+<label class="field-label" for="password">Password</label><div class="password-wrap"><input class="field" id="password" type="password" autocomplete="current-password" placeholder="कम्तीमा ६ अक्षर" minlength="6" required><button class="showpass" id="showpass" type="button">देखाउनुहोस्</button></div>
+<button class="primary" id="submit" type="submit">Login गर्नुहोस्</button>
+</form>
+<div class="or">वा यसबाट जारी राख्नुहोस्</div>
+<div class="socials"><button class="social google" id="google" type="button"><b>G</b> Google</button><button class="social facebook" id="facebook" type="button"><b>f</b> Facebook</button></div>
+<p class="message" id="message" role="status" aria-live="polite">आफ्नो Login विकल्प छान्नुहोस्।</p>
+<p class="switch" id="switchText">नयाँ हुनुहुन्छ? <a id="switchLink" href="./login.html?mode=signup">नयाँ Account बनाउनुहोस्</a></p>
+<p class="back"><a href="./index.html">← गृहपृष्ठमा फर्कनुहोस्</a></p>
+</section>
+</main>
 <script type="module">
-  import { initializeApp } from
-    "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile, GoogleAuthProvider, FacebookAuthProvider, signInWithPopup, signOut } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
 
-  import {
-    getAuth,
-    onAuthStateChanged,
-    signInWithEmailAndPassword,
-    createUserWithEmailAndPassword,
-    GoogleAuthProvider,
-    FacebookAuthProvider,
-    signInWithPopup,
-    signOut
-  } from
-    "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
-
-  // Firebase Console बाट प्राप्त वास्तविक configuration राख्नुहोस्।
- const firebaseConfig = {
-
+// Keep this configuration synchronized with Firebase Console > Project settings > Your apps.
+const firebaseConfig = {
   apiKey: "AIzaSyDHbuNuALD0gk4YyhFk6QGNfluKJR9ce8k",
-
   authDomain: "bihe-click.firebaseapp.com",
-
   projectId: "bihe-click",
-
   storageBucket: "bihe-click.firebasestorage.app",
-
   messagingSenderId: "766084686587",
-
   appId: "1:766084686587:web:25ab9510f8f392e9b6465e",
-
   measurementId: "G-GC4PEHLXMY"
-
 };
 
-  // Initialize Firebase exactly once.
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const googleProvider = new GoogleAuthProvider();
+const facebookProvider = new FacebookAuthProvider();
+googleProvider.setCustomParameters({ prompt: "select_account" });
+const $ = (id) => document.getElementById(id);
+const message = $("message");
+let signupMode = new URLSearchParams(location.search).get("mode") === "signup";
 
-  const googleProvider = new GoogleAuthProvider();
-  const facebookProvider = new FacebookAuthProvider();
-  const message = document.getElementById("message");
+function setMode(signup) {
+  signupMode = signup;
+  $("heading").textContent = signup ? "तपाईंको Account बनाउनुहोस्" : "फेरि स्वागत छ!";
+  $("subtitle").textContent = signup ? "Bihe Click सँग नयाँ यात्रा सुरु गर्नुहोस्।" : "आफ्नो खातामा Login गर्नुहोस्।";
+  $("nameWrap").hidden = !signup;
+  $("name").required = signup;
+  $("password").autocomplete = signup ? "new-password" : "current-password";
+  $("submit").textContent = signup ? "Sign Up गर्नुहोस्" : "Login गर्नुहोस्";
+  $("switchText").innerHTML = signup
+    ? 'पहिले नै Account छ? <a id="switchLink" href="./login.html">Login गर्नुहोस्</a>'
+    : 'नयाँ हुनुहुन्छ? <a id="switchLink" href="./login.html?mode=signup">नयाँ Account बनाउनुहोस्</a>';
+  $("navSignup").textContent = signup ? "Login" : "Sign Up";
+  $("navSignup").href = signup ? "./login.html" : "./login.html?mode=signup";
+  history.replaceState(null, "", signup ? "?mode=signup" : location.pathname);
+}
+setMode(signupMode);
 
-  function showError(error) {
-    console.error("Firebase Auth error:", error.code, error.message);
-
-    const messages = {
-      "auth/invalid-api-key":
-        "Firebase API Key गलत छ। Console बाट सही Web App config राख्नुहोस्।",
-      "auth/unauthorized-domain":
-        "Firebase Authentication मा वेबसाइटको domain अनुमति दिनुहोस्।",
-      "auth/operation-not-allowed":
-        "Firebase Console मा यो Login provider Enable गर्नुहोस्।",
-      "auth/popup-closed-by-user":
-        "Login popup बन्द भयो। फेरि प्रयास गर्नुहोस्।",
-      "auth/popup-blocked":
-        "Browser ले popup रोक्यो। Popup अनुमति दिएर फेरि प्रयास गर्नुहोस्।",
-      "auth/invalid-credential":
-        "Login विवरण वा provider configuration जाँच गर्नुहोस्।",
-      "auth/invalid-email":
-        "कृपया सही Email ठेगाना राख्नुहोस्।",
-      "auth/weak-password":
-        "कम्तीमा ६ अक्षरको बलियो Password राख्नुहोस्।",
-      "auth/email-already-in-use":
-        "यो Email बाट Account पहिल्यै बनिसकेको छ।",
-      "auth/invalid-login-credentials":
-        "Email वा Password मिलेन। फेरि जाँच गर्नुहोस्।",
-      "auth/account-exists-with-different-credential":
-        "यो Email अर्को Login विधिसँग जोडिएको हुन सक्छ।"
-    };
-
-    message.textContent =
-      messages[error.code] ||
-      "Login असफल भयो: " + error.message;
+function showError(error) {
+  console.error("Firebase Auth:", error.code, error.message);
+  const errors = {
+    "auth/invalid-api-key": "Firebase API Key मान्य छैन। Firebase Console को Web App configuration सँग मिलाउनुहोस्।",
+    "auth/api-key-not-valid": "API Key मान्य छैन। Firebase Console र Google Cloud मा API Key तथा restrictions जाँच्नुहोस्।",
+    "auth/unauthorized-domain": "Firebase Authentication → Settings → Authorized domains मा यो वेबसाइटको domain थप्नुहोस्।",
+    "auth/operation-not-allowed": "Firebase Console मा यो Login provider Enable गर्नुहोस्।",
+    "auth/popup-closed-by-user": "Login popup बन्द भयो। फेरि प्रयास गर्नुहोस्।",
+    "auth/popup-blocked": "Browser popup रोकिएको छ। Popup अनुमति दिनुहोस्।",
+    "auth/invalid-email": "सही Email ठेगाना राख्नुहोस्।",
+    "auth/weak-password": "कम्तीमा ६ अक्षरको Password राख्नुहोस्।",
+    "auth/email-already-in-use": "यो Email बाट Account पहिल्यै बनिसकेको छ। Login गर्नुहोस्।",
+    "auth/invalid-credential": "Email वा Password मिलेन अथवा credential मान्य छैन।",
+    "auth/invalid-login-credentials": "Email वा Password मिलेन। फेरि जाँच्नुहोस्।",
+    "auth/account-exists-with-different-credential": "यो Email अर्को Login विधिसँग जोडिएको छ। पहिले प्रयोग गरेको विधिबाट Login गर्नुहोस्।"
+  };
+  message.textContent = errors[error.code] || ("Login असफल भयो: " + error.message);
+}
+async function perform(action) {
+  message.textContent = "कृपया पर्खनुहोस्…";
+  $("submit").disabled = true;
+  try {
+    await action();
+    message.textContent = "Login सफल भयो। खोलिँदैछ…";
+    location.href = "./gallery.html";
+  } catch (error) {
+    showError(error);
+  } finally {
+    $("submit").disabled = false;
   }
-
-  async function runLogin(action) {
-    message.textContent = "Login प्रक्रिया चलिरहेको छ...";
-
-    try {
-      await action();
-      window.location.href = "gallery.html";
-    } catch (error) {
-      showError(error);
-    }
-  }
-
-  // Email / Password Login
-  document.getElementById("loginForm")
-    .addEventListener("submit", async (event) => {
-      event.preventDefault();
-
-      const email = document.getElementById("email").value.trim();
-      const password = document.getElementById("password").value;
-
-      await runLogin(() =>
-        signInWithEmailAndPassword(auth, email, password)
-      );
+}
+$("loginForm").addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const email = $("email").value.trim();
+  const password = $("password").value;
+  if (signupMode) {
+    const name = $("name").value.trim();
+    await perform(async () => {
+      const result = await createUserWithEmailAndPassword(auth, email, password);
+      if (name) await updateProfile(result.user, { displayName: name });
     });
-
-  // Create a new account
-  document.getElementById("signup").onclick = async () => {
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value;
-
-    if (!email || !password) {
-      message.textContent =
-        "Account बनाउन Email र Password भर्नुहोस्।";
-      return;
-    }
-
-    await runLogin(() =>
-      createUserWithEmailAndPassword(auth, email, password)
-    );
-  };
-
-  // Google Login
-  document.getElementById("google").onclick = () =>
-    runLogin(() => signInWithPopup(auth, googleProvider));
-
-  // Facebook Login
-  document.getElementById("facebook").onclick = () =>
-    runLogin(() => signInWithPopup(auth, facebookProvider));
-
-  // Logout
-  document.getElementById("logout").onclick = async () => {
-    try {
-      await signOut(auth);
-      message.textContent = "Logout भयो।";
-    } catch (error) {
-      showError(error);
-    }
-  };
-
-  // Authentication state
-  onAuthStateChanged(auth, (user) => {
-    document.getElementById("logout").hidden = !user;
-
-    if (user) {
-      message.textContent =
-        "Login भएको छ: " + (user.email || user.displayName || "User");
-    }
-  });
+  } else {
+    await perform(() => signInWithEmailAndPassword(auth, email, password));
+  }
+});
+$("google").addEventListener("click", () => perform(() => signInWithPopup(auth, googleProvider)));
+$("facebook").addEventListener("click", () => perform(() => signInWithPopup(auth, facebookProvider)));
+$("showpass").addEventListener("click", () => {
+  const input = $("password");
+  const visible = input.type === "password";
+  input.type = visible ? "text" : "password";
+  $("showpass").textContent = visible ? "लुकाउनुहोस्" : "देखाउनुहोस्";
+});
+$("switchText").addEventListener("click", (event) => {
+  const link = event.target.closest("a");
+  if (!link) return;
+  event.preventDefault();
+  setMode(!signupMode);
+  message.textContent = signupMode ? "नयाँ विवरण भरेर Account बनाउनुहोस्।" : "आफ्नो खातामा Login गर्नुहोस्।";
+});
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    message.textContent = "Login भएको छ: " + (user.email || user.displayName || "User");
+  }
+});
 </script>
-
+</body>
 </html>
