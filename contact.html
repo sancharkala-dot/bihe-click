@@ -101,4 +101,27 @@
 </script>
 <footer class="footer"><div class="wrap">© <span id="year"></span> Bihe Click · फोन/WhatsApp: <a href="https://wa.me/9779745384513">9745384513</a></div></footer>
 <script>const b=document.getElementById("menu"),n=document.getElementById("links");b.addEventListener("click",()=>{const o=n.classList.toggle("open");b.setAttribute("aria-expanded",String(o));b.textContent=o?"✕":"☰"});n.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{n.classList.remove("open");b.setAttribute("aria-expanded","false");b.textContent="☰"}));document.getElementById("year").textContent=new Date().getFullYear();</script>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
+const firebaseConfig = {
+  apiKey: "AIzaSyDHbuNuALD0gk4YyhFk6QGNfluKJR9ce8k",
+  authDomain: "bihe-click.firebaseapp.com",
+  projectId: "bihe-click",
+  storageBucket: "bihe-click.firebasestorage.app",
+  messagingSenderId: "766084686587",
+  appId: "1:766084686587:web:25ab9510f8f392e9b6465e",
+  measurementId: "G-GC4PEHLXMY"
+};
+document.documentElement.style.visibility = "hidden";
+const auth = getAuth(initializeApp(firebaseConfig));
+onAuthStateChanged(auth, user => {
+  if (user) {
+    document.documentElement.style.visibility = "visible";
+  } else {
+    const requested = location.pathname.split("/").pop() || "index.html";
+    location.replace("./login.html?redirect=" + encodeURIComponent(requested));
+  }
+});
+</script>
 </body></html>
