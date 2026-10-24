@@ -72,11 +72,11 @@
    if(a&&b){summary.innerHTML='बुकिङ अवधि: '+escapeHtml(a)+' देखि '+escapeHtml(b)+' सम्म<small>WhatsApp बुकिङ अनुरोधमा यही मिति पठाइनेछ।</small>';return;}
    summary.innerHTML='सुरु मिति: '+escapeHtml(a||b)+'<small>कृपया '+(a?'अन्तिम मिति':'सुरु मिति')+' पनि छान्नुहोस्।</small>';
  }
- if(typeof start.nepaliDatePicker==='function'){
-   start.nepaliDatePicker({unicodeDate:true});
-   end.nepaliDatePicker({unicodeDate:true});
+ if(typeof start.NepaliDatePicker==='function'){
+   start.NepaliDatePicker({unicodeDate:true,onChange:updateSummary});
+   end.NepaliDatePicker({unicodeDate:true,onChange:updateSummary});
  }else{
-   summary.innerHTML='नेपाली मिति छनोट सेवा लोड हुन सकेन। इन्टरनेट जडान जाँचेर पेज पुनः खोल्नुहोस्।';
+   summary.innerHTML='नेपाली मिति छनोट सेवा लोड हुन सकेन। कृपया इन्टरनेट जडान जाँचेर पेज पुनः खोल्नुहोस्।<small>मिति छान्ने सुविधा लोड भएन भने पेज रिफ्रेस गर्नुहोस्।</small>';
  }
  start.addEventListener('change',updateSummary);
  end.addEventListener('change',updateSummary);
