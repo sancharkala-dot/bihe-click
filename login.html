@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | Bihe Click</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh; display: grid;
+      place-items: center; padding: 20px;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #081d43, #174f87);
+    }
+    .login {
+      width: 100%; max-width: 410px; background: white;
+      padding: 28px; border-radius: 18px; text-align: center;
+      box-shadow: 0 12px 35px #0004;
+    }
+    .logo { width: 100px; height: 100px; object-fit: contain; }
+    h1 { color: #123b70; margin-bottom: 6px; }
+    p { color: #666; }
+    input, button {
+      width: 100%; padding: 13px; margin-top: 12px;
+      border-radius: 8px; font-size: 15px;
+    }
+    input { border: 1px solid #ccc; }
+    button {
+      border: 0; cursor: pointer; color: white;
+      background: #123b70; font-weight: bold;
+    }
+    .google { background: #4285f4; }
+    .facebook { background: #1877f2; }
+    .secondary { background: #555; }
+    #message { font-size: 14px; overflow-wrap: anywhere; }
+  </style>
+</head>
+<body>
+  <main class="login">
+    <img class="logo" src="bihe-click-logo.png" alt="Bihe Click Logo">
+    <h1>Bihe Click</h1>
+    <p>लगइन गर्नुहोस्</p>
+
+    <form id="loginForm">
+      <input id="email" type="email" placeholder="Email ठेगाना" required>
+      <input id="password" type="password" placeholder="Password (कम्तीमा ६ अक्षर)" minlength="6" required>
+      <button type="submit">Login / Sign in</button>
+    </form>
+
+    <button id="signup" class="secondary">नयाँ Account बनाउनुहोस्</button>
+    <button id="google" class="google">Google बाट Login</button>
+    <button id="facebook" class="facebook">Facebook बाट Login</button>
+    <button id="logout" class="secondary" hidden>Logout</button>
+    <p id="message">लगइन गर्न आफ्नो विकल्प छान्नुहोस्।</p>
+  </main>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
+    import {
+      getAuth, onAuthStateChanged, signInWithEmailAndPassword,
+      createUserWithEmailAndPassword, GoogleAuthProvider,
+      FacebookAuthProvider, signInWithPopup, signOut
+    } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
+
+    // Firebase Console → Project settings → Your apps बाट
+    // आफ्नो Web App को वास्तविक configuration राख्नुहोस्।
+    const firebaseConfig = {
+      apiKey: "PASTE_YOUR_API_KEY",
+      authDomain: "bihe-click.firebaseapp.com",
+      projectId: "bihe-click",
+      appId: "PASTE_YOUR_APP_ID"
+    };
+
+    const message = document.getElementById("message");
+    const auth = getAuth(initializeApp(firebaseConfig));
+    const googleProvider = new GoogleAuthProvider();
+    const facebookProvider = new FacebookAuthProvider();
+
+    function showError(error) {
+      const messages = {
+        "auth/unauthorized-domain": "Firebase मा यो वेबसाइटको domain अनुमति दिनुहोस्।",
+        "auth/popup-closed-by-user": "Login popup बन्द भयो। फेरि प्रयास गर्नुहोस्।",
+        "auth/account-exists-with-different-credential": "यो Email अर्को Login विधिसँग जोडिएको हुन सक्छ।",
+        "auth/invalid-credential": "Login विवरण वा provider configuration जाँच्नुहोस्।",
+        "auth/operation-not-allowed": "Firebase मा यो Login विधि Enable गर्नुहोस्।"
+      };
+      message.textContent = messages[error.code] || ("Login समस्या: " + error.message);
+    }
+
+    document.getElementById("loginForm").addEventListener("submit", async e => {
+      e.preventDefault();
+      try {
+        await signInWithEmailAndPassword(
+          auth,
+          document.getElementById("email").value,
+          document.getElementById("password").value
+        );
+        location.href = "gallery.html";
+      } catch (error) { showError(error); }
+    });
+
+    document.getElementById("signup").onclick = async () => {
+      try {
+        await createUserWithEmailAndPassword(
+          auth,
+          document.getElementById("email").value,
+          document.getElementById("password").value
+        );
+        message.textContent = "Account बन्यो।";
+        location.href = "gallery.html";
+      } catch (error) { showError(error); }
+    };
+
+    document.getElementById("google").onclick = async () => {
+      try {
+        await signInWithPopup(auth, googleProvider);
+        location.href = "gallery.html";
+      } catch (error) { showError(error); }
+    };
+
+    document.getElementById("facebook").onclick = async () => {
+      try {
+        await signInWithPopup(auth, facebookProvider);
+        location.href = "gallery.html";
+      } catch (error) { showError(error); }
+    };
+
+    document.getElementById("logout").onclick = async () => {
+      await signOut(auth);
+      message.textContent = "Logout भयो।";
+    };
+
+    onAuthStateChanged(auth, user => {
+      document.getElementById("logout").hidden = !user;
+      if (user) message.textContent = "Login भएको छ: " + user.email;
+    });
+  </script>
+</body>
+</html>
