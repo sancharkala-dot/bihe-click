@@ -66,11 +66,14 @@
     // Firebase Console → Project settings → Your apps बाट
     // आफ्नो Web App को वास्तविक configuration राख्नुहोस्।
     const firebaseConfig = {
-      apiKey: "PASTE_YOUR_API_KEY",
-      authDomain: "bihe-click.firebaseapp.com",
-      projectId: "bihe-click",
-      appId: "PASTE_YOUR_APP_ID"
-    };
+  apiKey: "AIzaSyDHbuNuALD0gk4YyhFk6QGNfluKJR9ce8k",
+  authDomain: "bihe-click.firebaseapp.com",
+  projectId: "bihe-click",
+  storageBucket: "bihe-click.firebasestorage.app",
+  messagingSenderId: "766084686587",
+  appId: "1:766084686587:web:25ab9510f8f392e9b6465e",
+  measurementId: "G-GC4PEHLXMY"
+};
 
     const message = document.getElementById("message");
     const auth = getAuth(initializeApp(firebaseConfig));
