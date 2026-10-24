@@ -55,101 +55,150 @@
     <p id="message">लगइन गर्न आफ्नो विकल्प छान्नुहोस्।</p>
   </main>
 
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
-    import {
-      getAuth, onAuthStateChanged, signInWithEmailAndPassword,
-      createUserWithEmailAndPassword, GoogleAuthProvider,
-      FacebookAuthProvider, signInWithPopup, signOut
-    } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
+  
+<script type="module">
+  import { initializeApp } from
+    "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
 
-    // Firebase Console → Project settings → Your apps बाट
-    // आफ्नो Web App को वास्तविक configuration राख्नुहोस्।
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+  import {
+    getAuth,
+    onAuthStateChanged,
+    signInWithEmailAndPassword,
+    createUserWithEmailAndPassword,
+    GoogleAuthProvider,
+    FacebookAuthProvider,
+    signInWithPopup,
+    signOut
+  } from
+    "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
+  // Firebase Console बाट प्राप्त वास्तविक configuration राख्नुहोस्।
+ const firebaseConfig = {
+
   apiKey: "AIzaSyDHbuNuALD0gk4YyhFk6QGNfluKJR9ce8k",
+
   authDomain: "bihe-click.firebaseapp.com",
+
   projectId: "bihe-click",
+
   storageBucket: "bihe-click.firebasestorage.app",
+
   messagingSenderId: "766084686587",
+
   appId: "1:766084686587:web:25ab9510f8f392e9b6465e",
+
   measurementId: "G-GC4PEHLXMY"
+
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+  // Initialize Firebase exactly once.
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
 
-    const message = document.getElementById("message");
-    const auth = getAuth(initializeApp(firebaseConfig));
-    const googleProvider = new GoogleAuthProvider();
-    const facebookProvider = new FacebookAuthProvider();
+  const googleProvider = new GoogleAuthProvider();
+  const facebookProvider = new FacebookAuthProvider();
+  const message = document.getElementById("message");
 
-    function showError(error) {
-      const messages = {
-        "auth/unauthorized-domain": "Firebase मा यो वेबसाइटको domain अनुमति दिनुहोस्।",
-        "auth/popup-closed-by-user": "Login popup बन्द भयो। फेरि प्रयास गर्नुहोस्।",
-        "auth/account-exists-with-different-credential": "यो Email अर्को Login विधिसँग जोडिएको हुन सक्छ।",
-        "auth/invalid-credential": "Login विवरण वा provider configuration जाँच्नुहोस्।",
-        "auth/operation-not-allowed": "Firebase मा यो Login विधि Enable गर्नुहोस्।"
-      };
-      message.textContent = messages[error.code] || ("Login समस्या: " + error.message);
+  function showError(error) {
+    console.error("Firebase Auth error:", error.code, error.message);
+
+    const messages = {
+      "auth/invalid-api-key":
+        "Firebase API Key गलत छ। Console बाट सही Web App config राख्नुहोस्।",
+      "auth/unauthorized-domain":
+        "Firebase Authentication मा वेबसाइटको domain अनुमति दिनुहोस्।",
+      "auth/operation-not-allowed":
+        "Firebase Console मा यो Login provider Enable गर्नुहोस्।",
+      "auth/popup-closed-by-user":
+        "Login popup बन्द भयो। फेरि प्रयास गर्नुहोस्।",
+      "auth/popup-blocked":
+        "Browser ले popup रोक्यो। Popup अनुमति दिएर फेरि प्रयास गर्नुहोस्।",
+      "auth/invalid-credential":
+        "Login विवरण वा provider configuration जाँच गर्नुहोस्।",
+      "auth/invalid-email":
+        "कृपया सही Email ठेगाना राख्नुहोस्।",
+      "auth/weak-password":
+        "कम्तीमा ६ अक्षरको बलियो Password राख्नुहोस्।",
+      "auth/email-already-in-use":
+        "यो Email बाट Account पहिल्यै बनिसकेको छ।",
+      "auth/invalid-login-credentials":
+        "Email वा Password मिलेन। फेरि जाँच गर्नुहोस्।",
+      "auth/account-exists-with-different-credential":
+        "यो Email अर्को Login विधिसँग जोडिएको हुन सक्छ।"
+    };
+
+    message.textContent =
+      messages[error.code] ||
+      "Login असफल भयो: " + error.message;
+  }
+
+  async function runLogin(action) {
+    message.textContent = "Login प्रक्रिया चलिरहेको छ...";
+
+    try {
+      await action();
+      window.location.href = "gallery.html";
+    } catch (error) {
+      showError(error);
+    }
+  }
+
+  // Email / Password Login
+  document.getElementById("loginForm")
+    .addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+
+      await runLogin(() =>
+        signInWithEmailAndPassword(auth, email, password)
+      );
+    });
+
+  // Create a new account
+  document.getElementById("signup").onclick = async () => {
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+
+    if (!email || !password) {
+      message.textContent =
+        "Account बनाउन Email र Password भर्नुहोस्।";
+      return;
     }
 
-    document.getElementById("loginForm").addEventListener("submit", async e => {
-      e.preventDefault();
-      try {
-        await signInWithEmailAndPassword(
-          auth,
-          document.getElementById("email").value,
-          document.getElementById("password").value
-        );
-        location.href = "gallery.html";
-      } catch (error) { showError(error); }
-    });
+    await runLogin(() =>
+      createUserWithEmailAndPassword(auth, email, password)
+    );
+  };
 
-    document.getElementById("signup").onclick = async () => {
-      try {
-        await createUserWithEmailAndPassword(
-          auth,
-          document.getElementById("email").value,
-          document.getElementById("password").value
-        );
-        message.textContent = "Account बन्यो।";
-        location.href = "gallery.html";
-      } catch (error) { showError(error); }
-    };
+  // Google Login
+  document.getElementById("google").onclick = () =>
+    runLogin(() => signInWithPopup(auth, googleProvider));
 
-    document.getElementById("google").onclick = async () => {
-      try {
-        await signInWithPopup(auth, googleProvider);
-        location.href = "gallery.html";
-      } catch (error) { showError(error); }
-    };
+  // Facebook Login
+  document.getElementById("facebook").onclick = () =>
+    runLogin(() => signInWithPopup(auth, facebookProvider));
 
-    document.getElementById("facebook").onclick = async () => {
-      try {
-        await signInWithPopup(auth, facebookProvider);
-        location.href = "gallery.html";
-      } catch (error) { showError(error); }
-    };
-
-    document.getElementById("logout").onclick = async () => {
+  // Logout
+  document.getElementById("logout").onclick = async () => {
+    try {
       await signOut(auth);
       message.textContent = "Logout भयो।";
-    };
+    } catch (error) {
+      showError(error);
+    }
+  };
 
-    onAuthStateChanged(auth, user => {
-      document.getElementById("logout").hidden = !user;
-      if (user) message.textContent = "Login भएको छ: " + user.email;
-    });
-  </script>
-</body>
+  // Authentication state
+  onAuthStateChanged(auth, (user) => {
+    document.getElementById("logout").hidden = !user;
+
+    if (user) {
+      message.textContent =
+        "Login भएको छ: " + (user.email || user.displayName || "User");
+    }
+  });
+</script>
+
 </html>
