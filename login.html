@@ -110,7 +110,9 @@ async function perform(action) {
   try {
     await action();
     message.textContent = "Login सफल भयो। खोलिँदैछ…";
-    location.href = "./gallery.html";
+    const requested = new URLSearchParams(location.search).get("redirect") || "gallery.html";
+    const allowed = ["about.html","gallery.html","services.html","contact.html"];
+    location.href = allowed.includes(requested) ? "./" + requested : "./gallery.html";
   } catch (error) {
     showError(error);
   } finally {
